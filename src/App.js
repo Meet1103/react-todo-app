@@ -1,14 +1,25 @@
 import React, { useState, useRef } from "react";            
-import './App.css';
+import { DragDropContext } from 'react-beautiful-dnd'
+import { v4 as uuidv4 } from 'uuid'
 import TodoForm from './Components/TodoForm/TodoForm'
 import TodoList from './Components/TodoList/TodoList'
+import './App.css';
 
 const App = () => {
   const [name, setName] = useState("");
   const [todos, setTodos] = useState([]);
   const inputRef = useRef()
-  const [update, setUpdate] = useState(false)
-  const [updateId, setUpdateId] = useState(0)
+  const [updateId, setUpdateId] = useState(null)
+
+  function onDragEnd(result) {
+    if (!result.destination) return;
+
+    const reorderedTodoItems = Array.from(todos);
+    const [reorderedItem] = reorderedTodoItems.splice(result.source.index, 1);
+    reorderedTodoItems.splice(result.destination.index, 0, reorderedItem);
+
+    setTodos(reorderedTodoItems);
+  }
 
   const handleChange = (e) => {
     setName(e.target.value);
@@ -16,11 +27,11 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(update) {
+    if(updateId) {
       const updateTodoValue = todos.find((todo,index) => todo.id === updateId);
       updateTodoValue.name = name
       setName("");
-      setUpdate(false)
+      setUpdateId(null)
     } else {
         addTodo(name);
         setName("");
@@ -38,7 +49,7 @@ const App = () => {
   }
 
   const addTodo = (name) => {
-    const newTodo = { id: Math.floor(Math.random() * 10000) , name: name, completed: false };
+    const newTodo = { id:uuidv4() , name: name, completed: false };
     setTodos([...todos, newTodo]);
   }
 
@@ -50,13 +61,11 @@ const App = () => {
       return todo
     })
     setTodos(completedTodo)
-    inputFocus()
   }
 
   const updateTodo = (id) => {
     const updatedTodo = todos.find((todo,index) => todo.id === id);
     setName(updatedTodo.name)
-    setUpdate(true)
     setUpdateId(updatedTodo.id)
     inputFocus()
   }
@@ -70,16 +79,18 @@ const App = () => {
   return (
     <div className="App">
       <header className="heading">TODO APP</header>
-      <TodoForm name={name} update={update} handleChange={handleChange} handleSubmit={handleSubmit} inputRef={inputRef} />
+      <TodoForm name={name} updateId={updateId} handleChange={handleChange} handleSubmit={handleSubmit} inputRef={inputRef} />
       {
         todos.length > 0 ? (
           <div>
-            <TodoList 
-            todos={todos}
-            checkTodo= {checkTodo}
-            updateTodo={updateTodo}
-            deleteTodo={deleteTodo}
-            />
+            <DragDropContext onDragEnd={onDragEnd} >
+              <TodoList 
+              todos={todos}
+              checkTodo= {checkTodo}
+              updateTodo={updateTodo}
+              deleteTodo={deleteTodo}
+              />
+            </DragDropContext>
             <button type="submit" onClick={clearTodo} className="clear-todo-list-btn">
               Clear Todo List
             </button>

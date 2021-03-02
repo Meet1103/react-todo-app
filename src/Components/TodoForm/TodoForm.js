@@ -1,7 +1,7 @@
 import React from "react";
 import "./TodoForm.css"
 
-const TodoForm = ({name, update, handleChange, handleSubmit, inputRef}) => {
+const TodoForm = ({name, updateId, handleChange, handleSubmit, inputRef}) => {
   return (
     <form className="todo-input-form" onSubmit={handleSubmit}>
       <input
@@ -16,7 +16,7 @@ const TodoForm = ({name, update, handleChange, handleSubmit, inputRef}) => {
         required
       />
       <button type="submit" className="add-todo-btn">
-        {!update ? "Add Todo" : "Save Todo"}
+        {!updateId ? "Add Todo" : "Save Todo"}
       </button>
     </form>
   );
