@@ -1,0 +1,24 @@
+.todo-input-form {
+	min-height: 20vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.todo-input,
+.add-todo-btn {
+	padding: 1rem;
+	font-size: 2rem;
+	outline: none;
+	border: none;
+}
+
+.todo-input {
+	background-color: white;
+}
+
+.add-todo-btn {
+	background-color: rgba(0, 255, 255, 0.85);
+	color: white;
+	cursor: pointer;
+}
