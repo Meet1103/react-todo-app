@@ -1,0 +1,43 @@
+.todo-item {
+	display: flex;
+	justify-content: space-between;
+	background-color: #fff;
+	border-radius: 5px;
+	color: #000;
+	padding: 0.6rem 0.4rem;
+	margin-bottom: 15px;
+	min-width: 40vw;
+	list-style: none;
+}
+
+.completed-todo-item {
+	text-decoration: line-through;
+	color: red;
+}
+
+.todo {
+	align-self: center;
+	font-size: 1.5rem;
+	padding-left: 3%;
+}
+
+.checkbtn,
+.updatebtn,
+.deletebtn {
+	margin-left: 5px;
+	padding: 0.5rem;
+	font-size: 18px;
+	background-color: white;
+	color: red;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.checkbtn {
+	color: turquoise;
+}
+
+.updatebtn {
+	color: orange;
+}
