@@ -1,11 +1,5 @@
 .App {
 	text-align: center;
-	background-image: linear-gradient(
-		to right,
-		rgba(255, 0, 0, 0.85),
-		rgba(179, 11, 179, 0.85)
-	);
-	min-height: 100vh;
 	color: black;
 }
 
@@ -14,7 +8,7 @@
 	justify-content: center;
 	font-size: 2.5rem;
 	font-weight: 700;
-	padding: 3% 0 2% 0;
+	padding: 3vh 0;
 }
 
 .clear-todo-list-btn {
@@ -30,4 +24,16 @@
 .initial-text {
 	font-size: 1.8rem;
 	margin: 50px;
+}
+
+@media screen and (max-width: 740px) {
+	.heading {
+		font-size: 1.5rem;
+		font-weight: 900;
+	}
+
+	.clear-todo-list-btn {
+		padding: 0.5rem;
+		font-size: 1rem;
+	}
 }

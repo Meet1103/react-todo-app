@@ -1,5 +1,4 @@
 .todo-input-form {
-	min-height: 20vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -7,8 +6,8 @@
 
 .todo-input,
 .add-todo-btn {
-	padding: 1rem;
-	font-size: 2rem;
+	padding: 0.8rem;
+	font-size: 1.5rem;
 	outline: none;
 	border: none;
 }
@@ -21,4 +20,14 @@
 	background-color: rgba(0, 255, 255, 0.85);
 	color: white;
 	cursor: pointer;
+}
+
+@media screen and (max-width: 740px) {
+	.todo-input,
+	.add-todo-btn {
+		padding: 0.5rem;
+		font-size: 1rem;
+		outline: none;
+		border: none;
+	}
 }

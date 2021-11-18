@@ -1,6 +1,15 @@
 .todo-container {
 	display: flex;
+	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	flex-direction: column;
+	margin: 3vh 0px;
+	height: 55vh;
+	overflow-y: auto;
+}
+
+@media screen and (max-width: 740px) {
+	.todo-container {
+		height: 70vh;
+	}
 }

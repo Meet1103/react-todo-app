@@ -1,12 +1,14 @@
 .todo-item {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	background-color: #fff;
 	border-radius: 5px;
 	color: #000;
 	padding: 0.6rem 0.4rem;
 	margin-bottom: 15px;
-	min-width: 40vw;
+	min-width: 80vw;
+	max-width: 80vw;
 	list-style: none;
 }
 
@@ -17,6 +19,7 @@
 
 .todo {
 	align-self: center;
+	max-width: 75%;
 	font-size: 1.5rem;
 	padding-left: 3%;
 }
@@ -40,4 +43,34 @@
 
 .updatebtn {
 	color: orange;
+}
+
+@media screen and (max-width: 740px) {
+	.todo-item {
+		padding: 0.6rem 0.4rem;
+		margin-bottom: 10px;
+		min-width: 80vw;
+		max-width: 80vw;
+		list-style: none;
+	}
+
+	.todo {
+		align-self: center;
+		font-size: 1.2rem;
+		max-width: 80%;
+	}
+
+	.checkbtn,
+	.updatebtn,
+	.deletebtn {
+		margin-left: 3px;
+		padding: 0.3rem;
+		font-size: 15px;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.todo {
+		max-width: 60%;
+	}
 }
